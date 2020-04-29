@@ -1,0 +1,103 @@
+{% extends 'layout.html' %}
+{% block content %}
+  <div class="container" style="background-color:white;">
+    <h1 class="center display-4">UWindsor Robotics & Tech</h1>
+    <p class="lead center">Build something awesome!</p>
+    <hr class="my-4">
+    <p class="center">Find out how you can make your idea come to life, or just learn about the wonderful world of robotics!</p>
+    <p class="center"><a class="btn btn-outline-secondary btn-lg" href="https://discord.gg/tdAAkE9" role="button">Join Our Discord Server!</a></p>
+  </div>
+
+
+  <br id="about"><br><br><br><br>
+  <div class="container center">
+    <h1 class="thin">What we do</h1>
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <p>We are a group at the University of Windsor dedicated to providing students the opportunity to explore the wonderful world of robotics. We challenge and encourage students to come up with their own projects, and help support them by providing them with the space, materials, and mentorship required to make it happen. We are currently looking for new members who are passionate about technology and who would like to learn more about what we do!</p>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <br id="projects"><br><br><br><br>
+  <div class="container center">
+    <h1 class="thin">Projects</h1>
+    <h3 class="center thin">Some of the things we're currently working on</h3>
+    <br><br><br>
+    <div class="container">
+      <div class="row">
+        {% if projects %}
+          {% for project in projects %}
+          <div class="col-md-4 center" style="padding-bottom: 15px;">
+            <div class="card" style="width: 100%;">
+              <div class="card-body">
+                <h5 class="card-title">{{ project.title }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ project.author }}</h6>
+                <p class="card-text">{{ project.content }}</p>
+                {% if current_user.is_authenticated %}
+                <a href="{{ url_for('edit', project_id=project.id) }}">Edit Project</a>
+                <a href="{{ url_for('delete', project_id=project.id) }}">Delete Project</a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <br><br><br><br><br>
+  <div class="container center">
+    <h1 class="thin">Our Members</h1>
+    <h2 class="thin">Executives</h2>
+    <br><br>
+    <div class="row">
+
+      <div class="col-md-4">
+        <h4>President</h4>
+        <p>Abrar Chowdhury</p>
+      </div>
+
+      <div class="col-md-4">
+        <h4>Vice President</h4>
+        <p>Josh Gehl</p>
+      </div>
+      
+      <div class="col-md-4">
+        <h4>Treasurer</h4>
+        <p>Austin Formagin</p>
+      </div>
+    </div>
+    <br><br>
+  </div>
+    
+  <div class="container">    
+    <h2 class="thin center">Founding Members</h2>
+    <br>
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-3 center">
+          <p>Abrar Chowdhury</p>
+          <p>Josh Gehl</p>
+          <p>Austin Formagin</p>
+          <p>Connor Horman</p>
+          <p>Ekjot Multani</p>
+        </div>
+      <div class="col-md-3 center">
+          <p>Ryan Prairie</p>
+          <p>Wahid Bawa</p>
+          <p>Jeremie Bornais</p>
+          <p>Mahir Chowdhury</p>
+          <p>Jagraj Aulakh</p>
+        </div>
+    </div>
+  </div>
+
+
+{% endblock %}
