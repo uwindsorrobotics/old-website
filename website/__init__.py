@@ -2,9 +2,14 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 # from datetime import datetime
 from flask_login import LoginManager
+import json
+
+with open('secrets.json') as f:
+  data = json.load(f)
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '79efe2f763efdjes88a67bc584e47d50'
+app.config['SECRET_KEY'] = data['secret_key']
+
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 
 db = SQLAlchemy(app)
