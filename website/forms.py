@@ -8,13 +8,13 @@ class ProjectForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
     author = StringField('Author', validators=[DataRequired()])
     content = TextAreaField('Content', validators=[DataRequired()])    
-    submit = SubmitField('Submit')
+    submit = SubmitField('Submit please')
 
 class Login(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
     remember = BooleanField('Remember Me')
-    submit = SubmitField('Login')
+    submit = SubmitField('Login please')
 
 # class EditForm(FlaskForm):
 #     title = StringField('Title', validators=[DataRequired()])
